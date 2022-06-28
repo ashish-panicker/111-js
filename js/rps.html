@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+        crossorigin="anonymous" />
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
+    <style>
+        .f-button-icon {
+            font-size: 5rem;
+        }
+
+    </style>
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body class="bg-dark">
+    <div class="container p-5">
+        <div class="row mt-5 mb-5">
+            <div class="col-md-12">
+                <p class="display-1 text-center fw-bolder">
+                    <span class="text-warning"> Rock </span>
+                    <span class="text-info">Paper </span>
+                    <span class="text-danger">Scissors</span>
+                </p>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div
+                class="col-md-12 p-5 d-flex justify-content-between align-items-center">
+                <button role="button" class="btn btn-warning btn-lg p-3" id="btnRock">
+                    <em class="bi bi-octagon f-button-icon"></em>
+                </button>
+                <button role="button" class="btn btn-info btn-lg p-3" id="btnPaper">
+                    <em class="bi bi-newspaper f-button-icon"></em>
+                </button>
+                <button
+                    role="button"
+                    class="btn btn-danger btn-lg p-3"
+                    id="btnScissors">
+                    <em class="bi bi-scissors f-button-icon"></em>
+                </button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div id="userWins" class="text-light text-center display-3">
+                    User - 1
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="systemWins" class="text-light text-center display-3">
+                    System - 2
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="display-4 text-light text-center" id="status"></div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="display-1 text-center fw-bolder" id="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+
+    <script src="rps-html.js"></script>
+</body>
+
+</html>
