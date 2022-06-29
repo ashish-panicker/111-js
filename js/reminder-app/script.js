@@ -12,8 +12,16 @@ const addReminder = function (e) {
 
 const deleteReminder = function (e) {
     const li = e.target.parentElement
-    console.log(li.innerText)
-    li.remove()
+    li.classList.add("border", "border-success");
+    e.target.remove()
+
+    const em = document.createElement("em")
+    em.classList.add("bi", "bi-check-lg", "me-2", "text-success")
+    em.style.fontSize = "1.1em"
+
+    li.insertBefore(em, li.firstChild)
+    // console.log(li.innerText)
+    // li.remove()
 }
 
 const createReminder = function (reminder) {
