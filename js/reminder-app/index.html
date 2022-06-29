@@ -19,14 +19,36 @@
 <body>
 
     <div class="container">
-        <div class="row p-2 mt-3">
-            <div class="col-md-12 col-sm-12">
-                <h2>Reminder Form</h2>
+        <div class="row p-2 mt-1">
+            <div class="col-md-12 col-sm-12 p-1 mt-0">
+                <p class="display-4 text-center m-2">Reminders Application</p>
+            </div>
+        </div>
+        <div class="row p-1 mt-0">
+            <div class="col-md-12 col-sm-12 p-3 mt-3">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-lg" id="txtReminder" placeholder="type in your reminder...">
+                    <button class="btn btn-lg btn-primary" role="button" type="button" id="btnCreate">
+                        <em class="bi bi-plus-lg"></em>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="row p-2 mt-2">
             <div class="col-md-12 col-sm-12">
-                <h2>reminders</h2>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <h2 class="text-center">Your Reminders</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <ul class="list-group" id="listReminders">
+                            
+                           
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
