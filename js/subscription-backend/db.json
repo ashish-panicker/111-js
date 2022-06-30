@@ -1,3 +1,38 @@
 {
-  "users": []
+  "subscriptions": [
+    {
+      "firstName": "Ashish",
+      "lastName": "S",
+      "email": "ashish@gmail.com",
+      "gender": "male",
+      "subscriptions": [
+        "Sports",
+        "Politics",
+        "Economics"
+      ],
+      "id": 1
+    },
+    {
+      "firstName": "Arun",
+      "lastName": "r",
+      "email": "arun@gmail.com",
+      "gender": "male",
+      "subscriptions": [
+        "Sports",
+        "Economics"
+      ],
+      "id": 2
+    },
+    {
+      "firstName": "Reddy",
+      "lastName": "Kalyani",
+      "email": "reddy.kalyani@gmail.com",
+      "gender": "female",
+      "subscriptions": [
+        "Politics",
+        "Economics"
+      ],
+      "id": 3
+    }
+  ]
 }
