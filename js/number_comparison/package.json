@@ -1,0 +1,12 @@
+{
+  "name": "number_comparison",
+  "version": "1.0.0",
+  "description": "a simple number comparison project developed using javascript and nodejs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": ["js", "node", "comparison"],
+  "author": "ashish s pannicker",
+  "license": "ISC"
+}
