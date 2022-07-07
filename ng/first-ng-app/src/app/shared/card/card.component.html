@@ -1,7 +1,17 @@
-<div class="h-100 p-5 rounded-3" [ngClass]="isDark ? 'bg-dark text-white' : 'bg-light text-dark'">
-  <h2>{{title}}</h2>
+<div
+  class="h-100 py-4 pe-3 ps-3 rounded-3"
+  [ngClass]="isDark ? 'bg-dark text-white' : 'bg-light text-dark'"
+>
+  <h2>{{ course.title }}</h2>
   <p>
-    {{description}}
+    {{ course.description }}
   </p>
-  <button class="btn" type="button" [ngClass]="isDark ? 'btn-outline-light' : 'btn-outline-dark'">Know more...</button>
+  <button
+    class="btn"
+    type="button"
+    [ngClass]="isDark ? 'btn-outline-light' : 'btn-outline-dark'"
+  >
+    Know more...
+  </button>
+  
 </div>

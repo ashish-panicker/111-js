@@ -1,19 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Course } from 'src/app/domain/course';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
+  @Input() course!: Course;
+  @Input() isDark: boolean = false;
 
-  @Input() title:string = ''
-  @Input() description:string = ''
-  @Input() isDark: boolean = false
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
