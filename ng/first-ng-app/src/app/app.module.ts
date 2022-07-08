@@ -5,16 +5,23 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './shared/welcome/welcome.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { CardComponent } from './shared/card/card.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     HeaderComponent,
-    CardComponent
+    CardComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule, // <-- import FormsModule before binding with [(ngModel)]
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

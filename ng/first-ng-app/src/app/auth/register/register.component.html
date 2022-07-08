@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3 my-2 p-3 bg-light text-dark rounded">
+    <h2 class="text-center mt-2 mb-2">Register</h2>
+
+    <form (ngSubmit)="register()" [formGroup]="registerForm">
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control form-control-lg"
+          name="userName"
+          id="userName"
+          formControlName="userName"
+          [ngClass]="{
+            'is-invalid':
+              registerForm.controls.userName.touched &&
+              registerForm.controls.userName.errors
+          }"
+        />
+        <label>Email address</label>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.userName.touched &&
+            registerForm.controls.userName.errors?.['required']"
+        >
+          Email is required
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.userName.touched &&
+            registerForm.controls.userName.errors?.['minlength']"
+        >
+          Email should be at least
+          {{
+            registerForm.controls.userName.errors?.['minlength'].requiredLength
+          }}
+          characters long. You entered
+          {{
+            registerForm.controls.userName.errors?.['minlength'].actualLength
+          }}
+          characters.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.userName.touched &&
+            registerForm.controls.userName.errors?.['maxlength']"
+        >
+          Email should be at most
+          {{
+                registerForm.controls.userName.errors?.['maxlength'].requiredLength
+          }}
+          characters long. Right now it is
+          {{
+                registerForm.controls.userName.errors?.['maxlength'].actualLength
+          }}
+          characters long.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.userName.touched &&
+            registerForm.controls.userName.errors?.['email']"
+        >
+          Email should be in proper format.
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          name="password"
+          id="password"
+          formControlName="password"
+        />
+        <label>Password</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          name="cfpassword"
+          id="cfpassword"
+          formControlName="confirmPassword"
+        />
+        <label>Confirm Password</label>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-lg btn-primary"
+        [disabled]="!registerForm.valid"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>
