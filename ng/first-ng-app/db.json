@@ -2,10 +2,16 @@
   "users": [
     {
       "id": 1,
-      "username": "admin",
       "email": "admin@velocity",
       "password": "admin",
       "role": "admin"
+    },
+    {
+      "userName": "as@gmail.com",
+      "password": "asas",
+      "confirmPassword": "asasas",
+      "role": "user",
+      "id": 2
     }
   ],
   "courses": []
