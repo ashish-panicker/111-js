@@ -31,5 +31,9 @@ export class RegisterComponent implements OnInit {
   register() {
     console.log('register form submitted');
     console.log(this.registerForm.value);
+    // TODO: validate the password and confirm password
+    // TODO: copy the form data to the server using services
   }
+
+  
 }

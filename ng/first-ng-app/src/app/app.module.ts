@@ -8,6 +8,8 @@ import { CardComponent } from './shared/card/card.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LandingComponent } from './shared/landing/landing.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     CardComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule, // <-- import FormsModule before binding with [(ngModel)]
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

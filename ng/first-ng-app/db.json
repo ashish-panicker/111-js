@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@velocity",
+      "password": "admin",
+      "role": "admin"
+    }
+  ],
+  "courses": []
+}

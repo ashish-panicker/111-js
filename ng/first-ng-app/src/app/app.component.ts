@@ -7,7 +7,8 @@ import { Course } from './domain/course';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'first-ng-app';
+  
+  isLoggedIn = false;
 
   courses: Course[] = [
     new Course(
