@@ -70,21 +70,125 @@
         <input
           type="password"
           class="form-control form-control-lg"
-          name="password"
-          id="password"
           formControlName="password"
+          [ngClass]="{
+            'is-invalid':
+              registerForm.controls.password.touched &&
+              registerForm.controls.password.errors
+          }"
         />
         <label>Password</label>
+
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.password.touched &&
+            registerForm.controls.password.errors?.['required']"
+        >
+          Password is required
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.password.touched &&
+            registerForm.controls.password.errors?.['passwordStrength']"
+        >
+          Password must have at least one number, one special character, one
+          upper case letter and one lower case letter.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.password.touched &&
+            registerForm.controls.password.errors?.['minlength']"
+        >
+          Password should be at least
+          {{
+            registerForm.controls.password.errors?.['minlength'].requiredLength
+          }}
+          characters long. You entered
+          {{
+            registerForm.controls.password.errors?.['minlength'].actualLength
+          }}
+          characters.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.password.touched &&
+            registerForm.controls.password.errors?.['maxlength']"
+        >
+          Password should be at most
+          {{
+                registerForm.controls.password.errors?.['maxlength'].requiredLength
+          }}
+          characters long. Right now it is
+          {{
+                registerForm.controls.password.errors?.['maxlength'].actualLength
+          }}
+          characters long.
+        </div>
       </div>
       <div class="form-floating mb-3">
         <input
           type="password"
           class="form-control form-control-lg"
-          name="cfpassword"
-          id="cfpassword"
+          [ngClass]="{
+            'is-invalid':
+              registerForm.controls.confirmPassword.touched &&
+              registerForm.controls.confirmPassword.errors
+          }"
           formControlName="confirmPassword"
         />
         <label>Confirm Password</label>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.confirmPassword.touched &&
+            registerForm.controls.confirmPassword.errors?.['required']"
+        >
+          Password must be confirmed.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.confirmPassword.touched &&
+            registerForm.controls.confirmPassword.errors?.['minlength']"
+        >
+          Password should be at least
+          {{
+            registerForm.controls.confirmPassword.errors?.['minlength'].requiredLength
+          }}
+          characters long. You entered
+          {{
+            registerForm.controls.confirmPassword.errors?.['minlength'].actualLength
+          }}
+          characters.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.confirmPassword.touched &&
+            registerForm.controls.confirmPassword.errors?.['maxlength']"
+        >
+          Password should be at most
+          {{
+                registerForm.controls.confirmPassword.errors?.['maxlength'].requiredLength
+          }}
+          characters long. Right now it is
+          {{
+                registerForm.controls.confirmPassword.errors?.['maxlength'].actualLength
+          }}
+          characters long.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.controls.confirmPassword.touched &&
+            registerForm.controls.confirmPassword.errors?.['passwordMatch']"
+        >
+          Confirmed Password should match that of password.
+        </div>
       </div>
       <button
         type="submit"

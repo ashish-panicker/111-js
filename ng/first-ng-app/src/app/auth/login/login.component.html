@@ -34,12 +34,22 @@
           placeholder="Enter your password"
           #pass="ngModel"
           [ngClass]="{ 'is-invalid': pass.touched && pass.errors?.['required'] }"
+          [ngClass]="{ 'is-invalid': pass.touched && pass.errors?.['passwordStrength'] }"
         />
         <label>Password</label>
         <div
           *ngIf="pass.touched && pass.errors?.['required']"
           class="invalid-feedback"
-        >Password is mandatory</div>
+        >
+          Password is mandatory
+        </div>
+        <div
+          *ngIf="pass.touched && pass.errors?.['passwordStrength']"
+          class="invalid-feedback"
+        >
+          Password requires at least one lowercase letter, one uppercase letter,
+          one special character and one number.
+        </div>
       </div>
       <button
         type="submit"
@@ -48,6 +58,15 @@
       >
         Submit
       </button>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="loggedIn && logInFailed">
+        <strong>Error!</strong> You failed to login into the system successfully. Please try again.
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
     </form>
   </div>
 </div>
