@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from 'src/app/domain/course';
-import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +7,9 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class DashboardComponent implements OnInit {
 
-  courses: Course[] = []
-  constructor(private _courseService: CourseService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.courses = this._courseService.getCourses()
   }
 
 }

@@ -1,17 +1,51 @@
 <div
-  class="h-100 py-4 pe-3 ps-3 rounded-3"
-  [ngClass]="isDark ? 'bg-dark text-white' : 'bg-light text-dark'"
+  class="py-4 me-2 pe-3 ps-3 rounded-3"
+  [ngClass]="
+    isDark ? 'bg-dark text-white' : 'bg-light text-dark border-2 border-dark'
+  "
 >
   <h2>{{ course.title }}</h2>
   <p>
     {{ course.description }}
   </p>
-  <button
-    class="btn"
-    type="button"
-    [ngClass]="isDark ? 'btn-outline-light' : 'btn-outline-dark'"
-  >
-    Know more...
-  </button>
-  
+  <div class="d-flex justify-content-between">
+    <button
+      class="btn"
+      type="button"
+      [ngClass]="isDark ? 'btn-outline-light' : 'btn-outline-dark'"
+    >
+      Know more...
+    </button>
+    <button
+      class="btn"
+      type="button"
+      [ngClass]="isDark ? 'btn-outline-light' : 'btn-outline-dark'"
+    >
+      Know more...
+    </button>
+  </div>
 </div>
+
+<!-- <div class="card py-4 no-border"  [ngClass]="isDark ? 'bg-dark text-white' : 'bg-warning text-dark'">
+  <div class="card-header"> {{course.code}} </div>
+  <div class="card-body">
+    <h5 class="card-title"> {{course.title}} </h5>
+    <p class="card-text"> {{course.description}} </p>
+  </div>
+  <div class="card-footer d-flex justify-content-between">
+     <button
+      class="btn"
+      type="button"
+      [ngClass]="isDark ? 'btn-outline-light' : 'btn-outline-dark'"
+    >
+      Know more...
+    </button>
+    <button
+      class="btn"
+      type="button"
+      [ngClass]="isDark ? 'btn-outline-light' : 'btn-outline-dark'"
+    >
+      Know more...
+    </button>
+  </div>
+</div> -->

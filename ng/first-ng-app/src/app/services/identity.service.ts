@@ -41,8 +41,25 @@ export class IdentityService {
     return null;
   }
 
-  getLoggedInUser() {
-    let user =  JSON.parse(sessionStorage.getItem('loggedInUser')!);
+  logout() {
+    sessionStorage.removeItem('loggedInUser');
+  }
+
+  getUsers(): User[] {
+    return users;
+  }
+
+  isUserLoggedIn() {
+    let user = JSON.parse(sessionStorage.getItem('loggedInUser')!);
     return user ? true : false;
+  }
+
+  isAdminLoggedIn() {
+    let user = JSON.parse(sessionStorage.getItem('loggedInUser')!);
+    return user.role === 'admin' ? true : false;
+  }
+
+  getLoggedInUser(): User {
+    return JSON.parse(sessionStorage.getItem('loggedInUser')!);
   }
 }

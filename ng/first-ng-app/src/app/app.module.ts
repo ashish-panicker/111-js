@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordStrengthDirective } from './shared/directives/password-strength.directive';
 import { DashboardComponent } from './shared/dashboard/dashboard.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { CoursesListComponent } from './shared/courses-list/courses-list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { DashboardComponent } from './shared/dashboard/dashboard.component';
     LandingComponent,
     PasswordStrengthDirective,
     DashboardComponent,
+    NavbarComponent,
+    CoursesListComponent,
   ],
   imports: [
     BrowserModule,

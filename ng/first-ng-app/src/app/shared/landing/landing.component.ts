@@ -14,7 +14,7 @@ export class LandingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this._identityService.getLoggedInUser()) {
+    if (this._identityService.isUserLoggedIn()) {
       this._router.navigate(['/dashboard']);
     }
   }

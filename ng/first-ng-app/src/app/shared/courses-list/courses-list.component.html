@@ -1,0 +1,5 @@
+<div class="row" data-masonry='{"percentPosition": true }'>
+  <div class="col-sm-6 col-lg-4 mb-4 my-2 p-1" *ngFor="let course of courses; even as isEven">
+    <app-card [course]="course" [isDark]="isEven"></app-card>
+  </div>
+</div>
