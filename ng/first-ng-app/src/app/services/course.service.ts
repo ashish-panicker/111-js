@@ -47,4 +47,8 @@ export class CourseService {
       ),
     ];
   }
+
+  getCourseCount(): number {
+    return this.getCourses().length;
+  }
 }

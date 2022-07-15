@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -15,6 +15,9 @@ import { PasswordStrengthDirective } from './shared/directives/password-strength
 import { DashboardComponent } from './shared/dashboard/dashboard.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CoursesListComponent } from './shared/courses-list/courses-list.component';
+import { CoursesNewComponent } from './shared/courses-new/courses-new.component';
+import { LibWelcomeModule } from '@ashishspanicker/lib-welcome';
+import { HeaderModule } from '@ashishspanicker/header';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { CoursesListComponent } from './shared/courses-list/courses-list.compone
     DashboardComponent,
     NavbarComponent,
     CoursesListComponent,
+    CoursesNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +40,11 @@ import { CoursesListComponent } from './shared/courses-list/courses-list.compone
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    LibWelcomeModule,
+    HeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

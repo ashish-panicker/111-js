@@ -49,6 +49,10 @@ export class IdentityService {
     return users;
   }
 
+  getUserCount(){
+    return users.length;
+  }
+
   isUserLoggedIn() {
     let user = JSON.parse(sessionStorage.getItem('loggedInUser')!);
     return user ? true : false;

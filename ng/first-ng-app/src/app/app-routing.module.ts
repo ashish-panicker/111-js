@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CoursesListComponent } from './shared/courses-list/courses-list.component';
+import { CoursesNewComponent } from './shared/courses-new/courses-new.component';
 import { DashboardComponent } from './shared/dashboard/dashboard.component';
 import { LandingComponent } from './shared/landing/landing.component';
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'courses', component: CoursesListComponent },
+  { path: 'courses-new', component: CoursesNewComponent },
   { path: '', component: LandingComponent },
 ];
 
