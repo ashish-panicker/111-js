@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>in.stackroute</groupId>
@@ -9,22 +8,97 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>getting-started-maven</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://github.com/ashish-panicker/111-js/tree/main/java/getting-started-maven</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <!-- Java version upto 8 -->
+    <!-- <maven.compiler.source>1.8</maven.compiler.source> -->
+    <!-- <maven.compiler.target>1.8</maven.compiler.target> -->
+    <!-- Java version more than 8 -->
+    <maven.compiler.release>11</maven.compiler.release>
   </properties>
 
+  <!-- 
+    dependencies
+    They are external libraries added to the project so that your project can use their functionality.
+    These are used by our java source code
+   -->
   <dependencies>
     <dependency>
+      <!-- https://repo.maven.apache.org/maven2/junit/junit/4.11/  -->
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>javax.mail-api</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+
   </dependencies>
 
+  <!-- 
+    build
+    It is the section where you can configure the build process of maven.
+   -->
+  <build>
+    <!-- <finalName>getting-started-with-maven</finalName> -->
+    <!-- 
+      plugins
+      They are external libraries added to the project to add or modify the functionality of maven.
+      These are used by maven to build the project.
+     -->
+    <plugins>
+      <plugin>
+        <!-- compiler plusing is used by maven to compile java source code-->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>in.stackroute.App</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
+<!-- 
+    java packages
+    namespaces where related java classes and interfaces are kept
+    physically in the file system they are created as directories
+
+    an example package => org.apache.maven.plugins, in.stackroute
+    https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.8.1/maven-compiler-plugin-3.8.1.jar
+
+    org/apache/maven/plugins/, in/stackroute/
+
+    maven central is a repository where you can find the java packages
+    https://repo.maven.apache.org/maven2
+
+    maven local repository is a repository where you can find the downloaded java packages in your local machine
+    in windows it is  %userprofile%\.m2\repository
+    in linux it is    ~.m2/repository
+
+ -->
