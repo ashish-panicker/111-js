@@ -74,3 +74,4 @@ To get started with Angular libraries, you need to create an Angular workspace, 
         })
         export class AppModule { }
     ```
+- Step - Now start using the library in your application
