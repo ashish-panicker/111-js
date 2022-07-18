@@ -54,7 +54,7 @@
      -->
     <plugins>
       <plugin>
-        <!-- compiler plusing is used by maven to compile java source code-->
+        <!-- compiler plugin is used by maven to compile java source code-->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
