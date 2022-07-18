@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="red" class="in.stackroute.shapes.Colour" >
+        <property name="fillColour" value="red" />
+    </bean>
+    <bean id="blue" class="in.stackroute.shapes.Colour" >
+        <property name="fillColour" value="blue" /> 
+    </bean>
+    <bean id="circle" class="in.stackroute.shapes.Circle" >
+        <property name="radius" value="10" />
+    </bean>
+    <bean id="square" class="in.stackroute.shapes.Square" >
+        <property name="side" value="10" />
+    </bean>
+    <bean id="shapeManagerCircle" class="in.stackroute.shapes.ShapeManager" >
+        <property name="shape" ref="circle" />
+        <property name="colour" ref="red" />
+    </bean>
+    <bean id="shapeManagerSquare" class="in.stackroute.shapes.ShapeManager" >
+        <property name="shape" ref="square" />
+        <property name="colour" ref="blue" />
+    </bean>
+</beans>

@@ -1,5 +1,7 @@
 package in.stackroute;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import in.stackroute.shapes.Circle;
 import in.stackroute.shapes.Colour;
 import in.stackroute.shapes.ShapeManager;
@@ -9,21 +11,19 @@ import in.stackroute.shapes.Square;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        ShapeManager shapeManager = new ShapeManager();
+public class App {
+    public static void main(String[] args) {
+        ApplicationContext context;
+        context = new ClassPathXmlApplicationContext("beans.xml");
 
-        Circle circle = new Circle(10);
-        shapeManager.setShape(circle);
-        shapeManager.setColour(new Colour("red"));
+        ShapeManager shapeManager;
+        
+        shapeManager = context.getBean("shapeManagerCircle", ShapeManager.class);
         shapeManager.draw();
 
-        Square square = new Square(10);
-        shapeManager.setShape(square);
-        shapeManager.setColour(new Colour("blue"));
+        shapeManager = context.getBean("shapeManagerSquare", ShapeManager.class);
         shapeManager.draw();
+
 
     }
 }

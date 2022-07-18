@@ -4,7 +4,9 @@ public class Square implements Shape {
 
     private double side;
 
-    public Square() {}
+    public Square() {
+        System.out.println("Square is created");
+    }
 
     public Square(double side) {
         this.side = side;

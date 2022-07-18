@@ -4,6 +4,10 @@ public class Colour {
 
     private String fillColour;
 
+    public Colour() {
+        System.out.println("Colour is created");
+    }
+
     public Colour(String fillColour) {
         this.fillColour = fillColour;
     }

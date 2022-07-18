@@ -4,7 +4,9 @@ public class Circle implements Shape {
 
     private double radius;
 
-    public Circle() {}
+    public Circle() {
+        System.out.println("Circle is created");
+    }
 
     public Circle(double radius) {
         this.radius = radius;
