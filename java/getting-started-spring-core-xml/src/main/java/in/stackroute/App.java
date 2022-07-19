@@ -2,10 +2,7 @@ package in.stackroute;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import in.stackroute.shapes.Circle;
-import in.stackroute.shapes.Colour;
 import in.stackroute.shapes.ShapeManager;
-import in.stackroute.shapes.Square;
 
 /**
  * Hello world!
