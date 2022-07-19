@@ -27,7 +27,7 @@ public class BookDao {
     }
 
     public void save(Book book) {
-        try(PreparedStatement ps = databaseConfig.getConnection().prepareStatement(INSERT_SQL)) {
+        try (PreparedStatement ps = databaseConfig.getConnection().prepareStatement(INSERT_SQL)) {
             ps.setInt(1, book.getId());
             ps.setString(2, book.getTitle());
             ps.setString(3, book.getIsbn());
@@ -44,17 +44,51 @@ public class BookDao {
         }
     }
 
-    public Book getBook(String id) {
-        // get the book
-        return null;
+    public Book getBook(int id) {
+        Book book = null;
+        try (PreparedStatement ps = databaseConfig.getConnection().prepareStatement(SELECT_SQL)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("isbn"),
+                        rs.getString("author"), rs.getString("publisher"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Exception: Cannot get book details. \n" + e.getMessage());
+        }
+        return book;
     }
 
-    public void delete(String id) {
-        // delete the book
+    public void delete(int id) {
+        try (PreparedStatement ps = databaseConfig.getConnection().prepareStatement(DELETE_SQL)) {
+            ps.setInt(1, id);
+            int updated = ps.executeUpdate();
+            if (updated > 0) {
+                System.out.println("Book deleted successfully");
+            } else {
+                System.out.println("Book not deleted");
+            }
+        } catch (SQLException e) {
+            System.err.println("Exception: Cannot delete book details. \n" + e.getMessage());
+        }
     }
 
     public void update(Book book) {
-        // update the book
+        try (PreparedStatement ps = databaseConfig.getConnection().prepareStatement(UPDATE_SQL)) {
+            ps.setString(1, book.getTitle());
+            ps.setString(2, book.getIsbn());
+            ps.setString(3, book.getAuthor());
+            ps.setString(4, book.getPublisher());
+            ps.setInt(5, book.getId());
+            int updated = ps.executeUpdate();
+            if (updated > 0) {
+                System.out.println("Book updated successfully");
+            } else {
+                System.out.println("Book not updated");
+            }
+        } catch (SQLException e) {
+            System.err.println("Exception: Cannot update book details. \n" + e.getMessage());
+        }
     }
 
     public List<Book> getAllBooks() {
