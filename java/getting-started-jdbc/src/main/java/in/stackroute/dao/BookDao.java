@@ -2,7 +2,10 @@ package in.stackroute.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import in.stackroute.config.DatabaseConfig;
 import in.stackroute.domain.Book;
@@ -55,8 +58,22 @@ public class BookDao {
     }
 
     public List<Book> getAllBooks() {
-        // get all books
-        return null;
+        List<Book> books = new ArrayList<>();
+        try (Statement statement = databaseConfig.getConnection().createStatement()) {
+            ResultSet resultSet = statement.executeQuery(SELECT_ALL_SQL);
+            while (resultSet.next()) {
+                Book book = new Book();
+                book.setId(resultSet.getInt("id"));
+                book.setTitle(resultSet.getString("title"));
+                book.setIsbn(resultSet.getString("isbn"));
+                book.setAuthor(resultSet.getString("author"));
+                book.setPublisher(resultSet.getString("publisher"));
+                books.add(book);
+            }
+        } catch (SQLException e) {
+            System.err.println("Exception: Cannot fetch all book details. \n" + e.getMessage());
+        }
+        return books;
     }
 
 
