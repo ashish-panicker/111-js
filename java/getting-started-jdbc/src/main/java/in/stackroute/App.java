@@ -12,11 +12,24 @@ import in.stackroute.domain.Book;
 public class App {
     public static void main(String[] args) {
 
-        deleteBook();
+        readAllBooks();
+        updateBook();
         readAllBooks();
     }
 
-    static void updateBook(){}
+    static void updateBook(){
+        BookDao bookDao = new BookDao(new DatabaseConfig());
+        Book book = bookDao.getBook(2);
+        if (book != null) {
+            book.setTitle("Java Programming");
+            book.setIsbn("123456789");
+            book.setAuthor("John Doe");
+            book.setPublisher("Stackroute");
+            bookDao.update(book);
+        }else{
+            System.out.println("Book not found");
+        }
+    }
     
     static void deleteBook(){
         BookDao bookDao = new BookDao(new DatabaseConfig());
