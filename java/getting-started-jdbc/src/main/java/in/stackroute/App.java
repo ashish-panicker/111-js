@@ -12,12 +12,19 @@ import in.stackroute.domain.Book;
 public class App {
     public static void main(String[] args) {
 
-        getBook();
+        deleteBook();
+        readAllBooks();
     }
 
     static void updateBook(){}
     
-    static void deleteBook(){}
+    static void deleteBook(){
+        BookDao bookDao = new BookDao(new DatabaseConfig());
+        Book book = bookDao.getBook(1);
+        if (book != null) {
+            bookDao.delete(book.getId());
+        }
+    }
 
     static void getBook(){
         DatabaseConfig databaseConfig = new DatabaseConfig();
