@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/batch_111</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">password</property>
+
+        <!-- dialect indicates the syntax that hibernate has to use in this application -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- logs the hibernate generated sql commands -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- before logging the generated sql, format it first -->
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- enable auto ddl -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="in.stackroute.domain.Author"/>
+    </session-factory>
+</hibernate-configuration>
