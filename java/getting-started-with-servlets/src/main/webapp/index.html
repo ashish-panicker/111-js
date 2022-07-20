@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Web App</title>
+
+    <style>
+        .container {
+            width: 80%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+  </head>
+  <body class="container">
+    <h1>Welcome to Java web applications</h1>
+    <h2>Hello from Maven and Jetty</h2>
+
+    <form action="auth" method="post">
+      <div>Username: <input type="text" name="userName" required/></div>
+      <div>Password: <input type="password" name="password" required/></div>
+      <div>
+        <input type="submit" value="Login" />
+      </div>
+    </form>
+
+    <br>
+    <form action="helloworld" method="get">
+        <div>
+            <input type="submit" value="Go to Java web app using HTTP GET" />
+        </div>
+    </form>
+    <br>
+    <form action="helloworld" method="post">
+        <div>
+            <input type="submit" value="Go to Java web app using HTTP POST" />
+        </div>
+    </form>
+  </body>
+</html>
