@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Intrest Calculator</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      .container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
+      input[type="submit"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+      div {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        /* font-size: 1.5rem; */
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="" method="">
+        <h2>Simple Interest Calculator</h2>
+        <div>Amount: <input type="text" name="amount" id="amount" required/></div>
+        <div>
+          Term: <input type="number" name="term" id="term" min="1" required/>
+          Unit:
+          <select name="unit" id="unit">
+            <option value="year">Year</option>
+            <option value="month">Month</option>
+          </select>
+        </div>
+        <div>Rate: <input type="text" name="rate" id="rate" required/></div>
+        <div>
+          <input type="submit" value="Calculate" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
