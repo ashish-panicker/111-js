@@ -1,4 +1,4 @@
-package in.stackroute.gettingstartedspringdatajpa.controllers;
+package in.stackroute.gettingstartedspringdatajpah2.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import in.stackroute.gettingstartedspringdatajpa.domain.Mentor;
-import in.stackroute.gettingstartedspringdatajpa.dto.MentorDto;
-import in.stackroute.gettingstartedspringdatajpa.service.MentorService;
+import in.stackroute.gettingstartedspringdatajpah2.domain.Mentor;
+import in.stackroute.gettingstartedspringdatajpah2.dto.MentorDto;
+import in.stackroute.gettingstartedspringdatajpah2.service.MentorService;
 
 @RestController
 public class MentorController {
