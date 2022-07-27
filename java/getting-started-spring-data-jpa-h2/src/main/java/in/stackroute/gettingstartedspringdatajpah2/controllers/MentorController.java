@@ -1,9 +1,11 @@
 package in.stackroute.gettingstartedspringdatajpah2.controllers;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -68,6 +70,28 @@ public class MentorController {
         mentorService.delete(mentorService.getMentorById(id).orElseThrow());
         Map<String, String> response = Map.of("message", "Mentor deleted successfully", "status",
                 HttpStatus.OK.toString());
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @GetMapping("/mentors/find/{email}")
+    public ResponseEntity<MentorDto> getMentorByEmail(@PathVariable String email) {
+        var mentorDto = modelMapper.map(mentorService.findByEmail(email).orElseThrow(), MentorDto.class);
+        return ResponseEntity.status(HttpStatus.OK).body(mentorDto);
+    }
+
+    @GetMapping("/mentors/find/{startDate}/{endDate}")
+    public ResponseEntity<Map<Object, Object>> getMentorsByJoinDateBetween(
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
+        Map<Object, Object> response = new HashMap<>();
+        var mentors = mentorService.findByJoinDateBetween(startDate, endDate);
+        if (mentors.isEmpty()) {
+            response.put("message", "No mentors found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+        response.put("status", HttpStatus.OK);
+        response.put("size", mentors.size());
+        response.put("mentors", mentors);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

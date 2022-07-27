@@ -2,6 +2,7 @@ package in.stackroute.gettingstartedspringdatajpah2.domain;
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -27,6 +28,7 @@ public class Mentor {
 
     private String name;
 
+    @Column(unique = true)
     private String email;
 
     @ElementCollection

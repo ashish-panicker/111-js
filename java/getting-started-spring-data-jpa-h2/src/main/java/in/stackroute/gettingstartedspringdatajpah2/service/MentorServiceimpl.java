@@ -1,5 +1,6 @@
 package in.stackroute.gettingstartedspringdatajpah2.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,16 @@ public class MentorServiceimpl implements MentorService {
     @Override
     public List<Mentor> getAllMentors() {
         return mentorRepository.findAll();
+    }
+
+    @Override
+    public Optional<Mentor> findByEmail(String email) {
+        return mentorRepository.findByEmail(email);
+    }
+
+    @Override
+    public List<Mentor> findByJoinDateBetween(LocalDate startDate, LocalDate endDate) {
+        return mentorRepository.findByJoinDateBetween(startDate, endDate);
     }
     
 }

@@ -1,5 +1,6 @@
 package in.stackroute.gettingstartedspringdatajpah2.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import in.stackroute.gettingstartedspringdatajpah2.domain.Mentor;
@@ -15,6 +16,10 @@ public interface MentorService {
     Optional<Mentor> getMentorById(int id);
 
     List<Mentor> getAllMentors();
+
+    Optional<Mentor> findByEmail(String email);
+
+    List<Mentor> findByJoinDateBetween(LocalDate startDate, LocalDate endDate);
 }
 
 /**
