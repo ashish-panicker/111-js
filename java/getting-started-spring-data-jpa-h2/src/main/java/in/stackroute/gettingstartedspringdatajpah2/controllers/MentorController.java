@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ import in.stackroute.gettingstartedspringdatajpah2.service.MentorService;
 @RestController
 public class MentorController {
 
+    private Logger log = LoggerFactory.getLogger(this.getClass());
+
     private MentorService mentorService;
 
     private ModelMapper modelMapper;
@@ -34,9 +38,11 @@ public class MentorController {
     // on successful creation of mentor, return the created mentor with status code 201
     @PostMapping("/mentors")
     public ResponseEntity<MentorDto> createMentor(@RequestBody @Valid MentorDto mentorDto) {
+        log.debug("CREATING A NEW MENTOR: " + mentorDto);
         Mentor mentor = modelMapper.map(mentorDto, Mentor.class);
         mentor = mentorService.create(mentor);
         mentorDto = modelMapper.map(mentor, MentorDto.class);
+        log.debug("CREATED A NEW MENTOR: ID = " + mentorDto.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(mentorDto);
     }
 
