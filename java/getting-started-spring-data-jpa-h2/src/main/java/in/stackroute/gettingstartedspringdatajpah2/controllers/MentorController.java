@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import in.stackroute.gettingstartedspringdatajpah2.domain.Mentor;
 import in.stackroute.gettingstartedspringdatajpah2.dto.MentorDto;
+import in.stackroute.gettingstartedspringdatajpah2.exceptions.MentorNotFoundException;
+import in.stackroute.gettingstartedspringdatajpah2.exceptions.NoSuchMentorException;
 import in.stackroute.gettingstartedspringdatajpah2.service.MentorService;
 
 @RestController
@@ -29,27 +32,32 @@ public class MentorController {
 
     private ModelMapper modelMapper;
 
+    private Map<Object, Object> response;
+
     public MentorController(MentorService mentorService, ModelMapper modelMapper) {
         this.mentorService = mentorService;
         this.modelMapper = modelMapper;
+        response = new HashMap<>();
     }
 
     // Post request to create a new mentor
     // on successful creation of mentor, return the created mentor with status code 201
     @PostMapping("/mentors")
-    public ResponseEntity<MentorDto> createMentor(@RequestBody @Valid MentorDto mentorDto) {
+    public ResponseEntity<Map<?, ?>> createMentor(@RequestBody @Valid MentorDto mentorDto) {
         log.debug("CREATING A NEW MENTOR: " + mentorDto);
         Mentor mentor = modelMapper.map(mentorDto, Mentor.class);
         mentor = mentorService.create(mentor);
         mentorDto = modelMapper.map(mentor, MentorDto.class);
         log.debug("CREATED A NEW MENTOR: ID = " + mentorDto.getId());
-        return ResponseEntity.status(HttpStatus.CREATED).body(mentorDto);
+        response.put("status", HttpStatus.CREATED);
+        response.put("response", mentorDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     // Get request to fetch all mentors
     @GetMapping("/mentors")
     public ResponseEntity<Map<Object, Object>> getAllMentors() {
-        Map<Object, Object> response = new HashMap<>();
+        response = new HashMap<>();
         var mentors = mentorService.getAllMentors();
         if (mentors.isEmpty()) {
             response.put("message", "No mentors found");
@@ -64,9 +72,21 @@ public class MentorController {
     // Get request to fetch a mentor by id
     // /mentors/10
     @GetMapping("/mentors/{id}")
-    public ResponseEntity<MentorDto> getMentorById(@PathVariable int id) {
-        var mentorDto = modelMapper.map(mentorService.getMentorById(id).orElseThrow(), MentorDto.class);
-        return ResponseEntity.status(HttpStatus.OK).body(mentorDto);
+    public ResponseEntity<Map<Object, Object>> getMentorById(@PathVariable int id) {
+        Mentor mentor = null;
+        try {
+            mentor = mentorService.getMentorById(id).orElseThrow(
+                    () -> new MentorNotFoundException("Mentor not found with id: " + id));
+        } catch (MentorNotFoundException e) {
+            log.error(e.getMessage());
+            response.put("message", e.getMessage());
+            response.put("status", HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+        var mentorDto = modelMapper.map(mentor, MentorDto.class);
+        response.put("status", HttpStatus.OK);
+        response.put("response", mentorDto);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     // Delete request to delete a mentor by id
@@ -81,7 +101,10 @@ public class MentorController {
 
     @GetMapping("/mentors/find/{email}")
     public ResponseEntity<MentorDto> getMentorByEmail(@PathVariable String email) {
-        var mentorDto = modelMapper.map(mentorService.findByEmail(email).orElseThrow(), MentorDto.class);
+        var mentorDto = modelMapper.map(
+                mentorService.findByEmail(email).orElseThrow(
+                        () -> new NoSuchMentorException("Mentor not foudn with email " + email)),
+                MentorDto.class);
         return ResponseEntity.status(HttpStatus.OK).body(mentorDto);
     }
 
@@ -89,7 +112,7 @@ public class MentorController {
     public ResponseEntity<Map<Object, Object>> getMentorsByJoinDateBetween(
             @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
             @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
-        Map<Object, Object> response = new HashMap<>();
+        response = new HashMap<>();
         var mentors = mentorService.findByJoinDateBetween(startDate, endDate);
         if (mentors.isEmpty()) {
             response.put("message", "No mentors found");
@@ -100,4 +123,6 @@ public class MentorController {
         response.put("mentors", mentors);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
+
+   
 }
