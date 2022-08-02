@@ -5,12 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import in.stackroute.movieuserservice.domain.User;
 import in.stackroute.movieuserservice.dto.LoginDto;
 import in.stackroute.movieuserservice.dto.LoginResponseDto;
 import in.stackroute.movieuserservice.dto.UserDto;
+import in.stackroute.movieuserservice.dto.ValidationResponseDto;
 import in.stackroute.movieuserservice.service.SecurityService;
 import in.stackroute.movieuserservice.service.UserService;
 
@@ -52,6 +54,13 @@ public class UserController {
         loginResponseDto.setValid(false);
         loginResponseDto.setUserName(loginDto.getUserName());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(loginResponseDto);
+
+    }
+
+    @PostMapping("/validate")
+    public ResponseEntity<ValidationResponseDto> validateToken(@RequestHeader("Authorization") String token) {
+        ValidationResponseDto loginResponse = securityService.validateToken(token);
+        return ResponseEntity.status(HttpStatus.OK).body(loginResponse);
 
     }
 }
