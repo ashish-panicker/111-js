@@ -22,11 +22,12 @@ import lombok.extern.slf4j.Slf4j;
 public class FavouriteController {
 
     private FavouriteService favouriteService;
-    // private UserService userService;
+    private UserService userService;
     private ModelMapper modelMapper;
 
-    public FavouriteController(FavouriteService favouriteService, ModelMapper modelMapper) {
+    public FavouriteController(FavouriteService favouriteService, UserService userService, ModelMapper modelMapper) {
         this.favouriteService = favouriteService;
+        this.userService = userService;
         this.modelMapper = modelMapper;
     }
 

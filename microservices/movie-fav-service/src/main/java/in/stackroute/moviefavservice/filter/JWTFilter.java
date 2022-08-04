@@ -32,14 +32,16 @@ public class JWTFilter extends GenericFilterBean {
 
 
         log.debug("msg: {}", "JWTFilter");
-
+        
         log.debug("FILTER");
         final HttpServletRequest request = (HttpServletRequest) servletRequest;
         final HttpServletResponse response = (HttpServletResponse) servletResponse;
         final String authHeader = request.getHeader("Authorization");
-
+        
         if ("OPTIONS".equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
+            
+            log.debug("msg: {}", "JWTFilter - OPTIONS");
             chain.doFilter(request, response);
         }
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -54,6 +56,7 @@ public class JWTFilter extends GenericFilterBean {
                     .of("message", "Invalid token", "status", HttpStatus.UNAUTHORIZED).toString());
             return;
         }
+        log.debug("msg {}", "JWTFilter - done");
         chain.doFilter(request, response);
 
 

@@ -1,6 +1,6 @@
 package in.stackroute.moviefavservice.service;
 
-import java.net.URL;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -12,8 +12,9 @@ import in.stackroute.moviefavservice.dto.IdentityResponse;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final String URL = "http://localhost:8000/users/validate";
+    private static final String URL = "http://movie-fav-service/users/validate";
 
+    @LoadBalanced
     private RestTemplate restTemplate;
 
     public UserServiceImpl(RestTemplate restTemplate) {
